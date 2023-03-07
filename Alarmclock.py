@@ -5,7 +5,6 @@ import random
 import time
 import pyautogui
 
-
 royaltyVideos = [
     'https://www.youtube.com/watch?v=eQo_tJdZMkI&ab_channel=BuildEmpire', 
     'https://www.youtube.com/watch?v=R4smaCJD-Oo', 
@@ -43,7 +42,6 @@ class WakeProgram(Tk):
         self.geometry("600x400")
         self['background'] = '#000000'
         self.initUI()
-        
 
     def initUI(self):
         self.title("Wake Program")
@@ -78,7 +76,7 @@ class WakeProgram(Tk):
         self.set_alarm_button = Button(self, text="Set Alarm", command=self.set_alarm)
         self.set_alarm_button.config(foreground='white', background='black')
         self.set_alarm_button.pack(padx=10, pady=10, anchor='center')
-    
+
     def set_alarm(self):
         wake_url = self.options[self.var.get()]
         alarm_time = datetime.datetime.strptime(self.alarm_time_entry.get(), "%H:%M")
@@ -106,10 +104,10 @@ class WakeProgram(Tk):
         print("opening youtube")
         time.sleep(60)
         pyautogui.click(x=1196, y=828)
-        time.sleep(8*60)
-        pyautogui.press("a")
-        time.sleep(8*60)
-        pyautogui.press("a")
+        while True: # Keep screen and user awake
+            print("pressed 'a' key")
+            pyautogui.press("a")
+            time.sleep(60)
 
     def play_spotify(self):
         spotify = self.options[self.var.get()]
@@ -120,11 +118,10 @@ class WakeProgram(Tk):
         print("click")
         time.sleep(5)
         pyautogui.click(x=1880, y=970)
-        time.sleep(8*60)
-        pyautogui.press("a")
-        time.sleep(8*60)
-        pyautogui.press("a")
-
+        while True: # Keep screen and user awake
+            print("pressed 'a' key")
+            pyautogui.press("a")
+            time.sleep(60)
 
 if __name__ == '__main__':
     app = WakeProgram()
